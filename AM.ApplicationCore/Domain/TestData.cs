@@ -131,6 +131,7 @@ namespace AM.ApplicationCore.Domain
             EffectiveArrival = new DateTime(2022, 02, 01, 23, 10, 10),
             EstimatedDuration = 105,
             plane = BoingPlane
+            
         };
         public static Flight flight3 = new Flight
         {

@@ -16,10 +16,9 @@ namespace AM.ApplicationCore.Domain
             return "HealthInformation: " + HealthInformation + " Nationality: " + Nationality;
         }
 
-        public override void PassengerType()
+        public override string PassengerType()
         {
-            base.PassengerType();
-            Console.WriteLine("and I'm a traveller");
+            return base.PassengerType() + "I am a traveller";
         }
     }
     

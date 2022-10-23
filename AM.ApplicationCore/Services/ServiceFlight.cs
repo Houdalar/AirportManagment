@@ -104,17 +104,14 @@ namespace AM.ApplicationCore.Services
 
         public List<Flight> OrderedDurationFlights()
         {
-            return ((List<Flight>)(from x in Flights
+            return ((from x in Flights
                     orderby x.EstimatedDuration descending
-                    select x));
+                    select x).ToList());
         }
 
         public List<Traveller> SeniorTravellers(Flight flight)
         {
-            var query = from x in flight.Passengers.OfType<Traveller>()
-                        orderby x.BirthDate ascending
-                        select x.Nationality;
-            return (List<Traveller>)query.Take(3);
+            return flight.Passengers.OfType<Traveller>().OrderBy(x => x.BirthDate).Take(3).ToList();
         }
 
         public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()

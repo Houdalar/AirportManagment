@@ -40,9 +40,9 @@ namespace AM.ApplicationCore.Domain
                 return FirstName == firstName && LastName == lastName;
         }
 
-        public virtual void PassengerType()
+        public virtual string PassengerType()
         {
-            Console.WriteLine("I am a Passenger");
+            return "I am a passenger";
         }
     }
    

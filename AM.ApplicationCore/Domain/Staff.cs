@@ -19,10 +19,9 @@ namespace AM.ApplicationCore.Domain
             return "Function: " + Function + " EmployementDate: " + EmployementDate + " Salary: " + Salary;
         }
 
-        public override void PassengerType()
+        public override string PassengerType()
         {
-            base.PassengerType();
-            Console.WriteLine("and I'm a staff member");
+            return base.PassengerType() + "I am a Staff Member";
         }
     }
    
