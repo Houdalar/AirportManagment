@@ -41,17 +41,15 @@ Passenger passenger = new Passenger()
 {
     BirthDate = new DateTime(1989, 12, 05),
     EmailAddress = "arima.kosei@esprit.tn",
-    FirstName = "arima",
-    LastName = "kosei",
+    fullName = new FullName("arima", "kosei"),
     TelNumber = 20153458,
     PassportNumber = "123456789",
 };
 Traveller traveller = new Traveller()
 {
     BirthDate = new DateTime(2003, 08, 22),
-    EmailAddress = "itchigo.kurosakei@esprit.tn",
-    FirstName = "itchigo",
-    LastName = "kurosakei",
+    EmailAddress = "ichigo.kurosaki@esprit.tn",
+    fullName = new FullName("ichigo", "kurosaki"),
     TelNumber = 98122256,
     PassportNumber = "0124884rf5f",
     Nationality = "japanese",
@@ -61,8 +59,7 @@ Staff staff = new Staff()
 {
     BirthDate = new DateTime(1995, 10, 24),
     EmailAddress = "okabe.rintaro@esprit.tn",
-    FirstName = "rintaro",
-    LastName = "okabe",
+    fullName = new FullName("okabe", "rintarou"),
     TelNumber = 50143256,
     PassportNumber = "0124954rf5f",
     Salary = 10000,

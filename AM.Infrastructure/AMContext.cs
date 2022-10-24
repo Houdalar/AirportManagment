@@ -23,9 +23,17 @@ namespace AM.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
+            modelBuilder.ApplyConfiguration(new FlightConfiguration());
+            modelBuilder.ApplyConfiguration(new PassengerConfiguration());
         }
+        protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) // bech na3mel configuration generale appliqué 3al les entités el kol fi 3outh bech na3mel les annotation 3al les attributs mta3 kol entity bel ka3ba bel ka3ba
+        {
+            //base.ConfigureConventions(configurationBuilder);
+            configurationBuilder.Properties<String>().HaveMaxLength(50); // ma3neha 9oltelhom li ay string 3ana mayfoutech toulou 50
+            configurationBuilder.Properties<DateTime>().HaveColumnType("Date"); 
 
 
 
+        }
     }
 }

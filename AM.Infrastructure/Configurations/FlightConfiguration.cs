@@ -9,16 +9,20 @@ using System.Threading.Tasks;
 
 namespace AM.Infrastructure.Configurations
 {
-    public class FlightConfiguration
+    public class FlightConfiguration : IEntityTypeConfiguration<Flight>
+    
     {
-        public class PlaneConfiguration : IEntityTypeConfiguration<Flight>
-        {
-           
             public void Configure(EntityTypeBuilder<Flight> builder)
             {
-                builder.HasMany(f => f.Passengers).WithMany(p => p.Flights);
+                //Many-to-Many
+                builder.HasMany(f => f.Passengers).WithMany(p => p.Flights)
+                .UsingEntity(j => j.ToTable("Reservation")); // rename table d'association
+                //One-to-Many
+                builder.HasOne(f => f.plane).WithMany(pl=>pl.Flights)
+                .HasForeignKey(f=>f.PlaneId)
+                .OnDelete(DeleteBehavior.ClientSetNull); // foreign key set at null if the associated entity is deleted
                 
             }
-        }
+        
     }
 }

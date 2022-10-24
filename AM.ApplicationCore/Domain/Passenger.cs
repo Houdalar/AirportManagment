@@ -15,8 +15,9 @@ namespace AM.ApplicationCore.Domain
         [StringLength(7,ErrorMessage= "the PassportNumber require 7 caracters")]
         public string? PassportNumber { get; set; }
         [MinLength(3, ErrorMessage = "Max length 25"),MaxLength(25,ErrorMessage ="Max length 25")]
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        //public string? FirstName { get; set; }
+        //public string? LastName { get; set; }
+        public FullName fullName { get; set; }
         [Display(Name = "Date of Birth"),DataType(DataType.Date)] // ay 7aja marbouta b donneés n7otou DataType 
         public DateTime BirthDate { get; set; }
         [RegularExpression(@"^[0-9]{8}$", ErrorMessage = "invalid phone number")]
@@ -27,17 +28,17 @@ namespace AM.ApplicationCore.Domain
 
         public override string ToString()
         {
-            return "FirstName: " + FirstName + " LastName: " + LastName + " date of Birth: " + BirthDate + " Passport Number: " + PassportNumber + " Phone Number: " + TelNumber + " Email Address: " + EmailAddress;
+            return "FirstName: " + fullName.FirstName + " LastName: " + fullName.LastName + " date of Birth: " + BirthDate + " Passport Number: " + PassportNumber + " Phone Number: " + TelNumber + " Email Address: " + EmailAddress;
         }
 
 
         public bool CheckProfile(string firstName, string lastName, string? email)
         {
             if (email != null)
-                return FirstName == firstName && LastName == lastName &&
+                return fullName.FirstName == firstName && fullName.LastName == lastName &&
                 EmailAddress == email;
             else
-                return FirstName == firstName && LastName == lastName;
+                return fullName.FirstName == firstName && fullName.LastName == lastName;
         }
 
         public virtual string PassengerType()

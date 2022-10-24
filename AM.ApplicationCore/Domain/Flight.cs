@@ -11,7 +11,7 @@ namespace AM.ApplicationCore.Domain
     {
         public string? AirlineLogo { get; set; }
         public int FlightId { get; set; }
-        [ForeignKey("PlaneId")]
+        [ForeignKey("PlaneId")] // mech lazem fou9 attribut betharoura 
         public int? PlaneId { get; set; }
         public DateTime FlightDate { get; set; }
         public int EstimatedDuration { get; set; }

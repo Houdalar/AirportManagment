@@ -14,7 +14,7 @@ namespace AM.Infrastructure.Configurations
         {
             builder.HasKey(p => p.PlaneId);
             builder.ToTable("MyPlanes"); //bech nbadel e2sm el table f database
-            builder.Property(p => p.Capacity).HasColumnName("PlaneCapacity");
+            builder.Property(p => p.Capacity).HasColumnName("PlaneCapacity"); // badalna 2esm el column
         }
     }
 }
