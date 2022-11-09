@@ -109,10 +109,7 @@ namespace AM.ApplicationCore.Services
                     select x).ToList());
         }
 
-        public List<Traveller> SeniorTravellers(Flight flight)
-        {
-            return flight.Passengers.OfType<Traveller>().OrderBy(x => x.BirthDate).Take(3).ToList();
-        }
+        public List<Traveller> SeniorTravellers(Flight flight) => flight.Passengers.OfType<Traveller>().OrderBy(x => x.BirthDate).Take(3).ToList();
 
         public IEnumerable<IGrouping<string, Flight>> DestinationGroupedFlights()
         {

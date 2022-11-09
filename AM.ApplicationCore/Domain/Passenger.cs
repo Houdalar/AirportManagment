@@ -24,7 +24,10 @@ namespace AM.ApplicationCore.Domain
         public int TelNumber { get; set; }
         [DataType(DataType.EmailAddress)]
         public string? EmailAddress { get; set; }
+
+        // prop de navigation
         public virtual List<Flight>? Flights { get; set; }
+        public virtual List<Ticket>? Tickets { get; set; }
 
         public override string ToString()
         {

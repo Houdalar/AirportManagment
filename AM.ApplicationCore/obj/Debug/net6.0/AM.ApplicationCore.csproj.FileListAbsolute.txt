@@ -10,3 +10,11 @@ C:\Users\admin\Desktop\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCor
 C:\Users\admin\Desktop\tp1\AM.ApplicationCore\obj\Debug\net6.0\refint\AM.ApplicationCore.dll
 C:\Users\admin\Desktop\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.pdb
 C:\Users\admin\Desktop\tp1\AM.ApplicationCore\obj\Debug\net6.0\ref\AM.ApplicationCore.dll
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.csproj.AssemblyReference.cache
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.AssemblyInfoInputs.cache
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.AssemblyInfo.cs
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.csproj.CoreCompileInputs.cache
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.dll
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\refint\AM.ApplicationCore.dll
+D:\4SIM2\tp1\AM.ApplicationCore\obj\Debug\net6.0\AM.ApplicationCore.pdb

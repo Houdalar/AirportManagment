@@ -17,9 +17,12 @@ namespace AM.ApplicationCore.Domain
         public int EstimatedDuration { get; set; }
         public DateTime EffectiveArrival { get; set; }
         public string? Departure { get; set; }
-        public string? Destination { get; set; }
+        public  string? Destination { get; set; }
+        public virtual Plane? plane { get; set; }
+
         public virtual List<Passenger>? Passengers { get; set; }
-        public Plane? plane { get; set; }
+        public virtual List<Ticket>? Tickets { get; set; }
+        
 
         public override string ToString()
         {

@@ -14,12 +14,8 @@ namespace AM.ApplicationCore.Domain
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        public FullName(String first, String last) 
-        {
-            this.LastName = last;
-            //[Required] : 3malneha fel configuration hatheka 3leha na7ineha lena 
-            this.FirstName = first;
-        }
+        
     }
     
+
 }

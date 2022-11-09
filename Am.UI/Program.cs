@@ -1,6 +1,10 @@
 ﻿using AM.ApplicationCore.Domain;
 using AM.ApplicationCore.Interfaces;
 using AM.ApplicationCore.Services;
+using AM.Infrastructure;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading.Tasks.Dataflow;
 
 //Plane plane = new Plane();
 //plane.PlaneType = PlaneType.Airbus;
@@ -41,7 +45,7 @@ Passenger passenger = new Passenger()
 {
     BirthDate = new DateTime(1989, 12, 05),
     EmailAddress = "arima.kosei@esprit.tn",
-    fullName = new FullName("arima", "kosei"),
+    fullName = new FullName { FirstName = "arima", LastName = "kosei" },
     TelNumber = 20153458,
     PassportNumber = "123456789",
 };
@@ -49,7 +53,7 @@ Traveller traveller = new Traveller()
 {
     BirthDate = new DateTime(2003, 08, 22),
     EmailAddress = "ichigo.kurosaki@esprit.tn",
-    fullName = new FullName("ichigo", "kurosaki"),
+    fullName = new FullName { FirstName = "ichigo", LastName = "kurosaki" },
     TelNumber = 98122256,
     PassportNumber = "0124884rf5f",
     Nationality = "japanese",
@@ -59,7 +63,7 @@ Staff staff = new Staff()
 {
     BirthDate = new DateTime(1995, 10, 24),
     EmailAddress = "okabe.rintaro@esprit.tn",
-    fullName = new FullName("okabe", "rintarou"),
+    fullName = new FullName { FirstName = "okabe", LastName = "rintarou" },
     TelNumber = 50143256,
     PassportNumber = "0124954rf5f",
     Salary = 10000,
@@ -113,6 +117,37 @@ Console.WriteLine("                            ");
 Console.WriteLine("------ Senior Travellers ------");
 Console.WriteLine("                            ");
 serviceFlight.SeniorTravellers(TestData.listFlights[0]).ForEach(Console.WriteLine);
+
+
+Console.WriteLine("                            ");
+Console.WriteLine("---------------------------- Lazy loading ----------------------------");
+
+Flight filght = new Flight()
+{
+    //FlightId = 1,
+    FlightDate = new DateTime(2022, 10, 10),
+    Departure = "Tunis",
+    Destination = "Paris",
+    EffectiveArrival = new DateTime(2022, 10, 11),
+    EstimatedDuration = 2,
+    AirlineLogo = "plane.pnj",
+    plane = new Plane
+    {
+        Capacity = 150,
+        ManufactureDate = new DateTime(2020, 12, 12),
+        PlaneType = PlaneType.Airbus
+    }
+};
+
+AMContext mycontext = new AMContext();
+mycontext.Flights.Add(filght); // ajout du flight dans dbset
+mycontext.SaveChanges(); // synchronisation
+
+foreach (Flight f in mycontext.Flights)
+{
+    Console.WriteLine("Flight = " + filght.ToString() +"Plane = " + filght.plane.ToString());
+}
+
 
 Console.WriteLine("                            ");
 Console.WriteLine("---------------------------- Fin ----------------------------");

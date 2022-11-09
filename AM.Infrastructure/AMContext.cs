@@ -1,7 +1,6 @@
 ﻿using AM.ApplicationCore.Domain;
 using AM.Infrastructure.Configurations;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection.Emit;
 
 namespace AM.Infrastructure
 {
@@ -12,6 +11,7 @@ namespace AM.Infrastructure
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\mssqllocaldb;
               Initial Catalog=AirportManagementDB;Integrated Security=true");
             base.OnConfiguring(optionsBuilder);
+            optionsBuilder.UseLazyLoadingProxies(); //activer lazy loading
         }
 
         public virtual DbSet<Flight>? Flights { get; set; }
@@ -25,6 +25,14 @@ namespace AM.Infrastructure
             modelBuilder.ApplyConfiguration(new PlaneConfiguration());
             modelBuilder.ApplyConfiguration(new FlightConfiguration());
             modelBuilder.ApplyConfiguration(new PassengerConfiguration());
+            modelBuilder.ApplyConfiguration(new TicketConfiguration());
+
+            // TPT / Héritage
+
+            modelBuilder.Entity<Passenger>().ToTable("Passengers");
+            modelBuilder.Entity<Staff>().ToTable("Staffs");
+            modelBuilder.Entity<Traveller>().ToTable("Travellers");
+
         }
         protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder) // bech na3mel configuration generale appliqué 3al les entités el kol fi 3outh bech na3mel les annotation 3al les attributs mta3 kol entity bel ka3ba bel ka3ba
         {
