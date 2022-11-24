@@ -14,6 +14,27 @@ namespace AM.Infrastructure
         private readonly Type _repositoryType;
         private bool disposeValue;
 
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposeValue)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+                disposeValue = true;
+            }
+        }
+        ~UnitOfWork()
+        {
+            Dispose(disposing : false);
+        }
+        public void Dispose()
+        {
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
+        }
+
         public UnitOfWork(DbContext context, Type repositoryType)
         {
             _context = context;

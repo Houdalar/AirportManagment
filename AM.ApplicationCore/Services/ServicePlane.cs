@@ -11,27 +11,32 @@ namespace AM.ApplicationCore.Services
 {
     public class ServicePlane : IServicePlane
     {
-        private readonly IGenericRepository<Plane> _repo;
+        private IUnitOfWork unitOfWork;
 
-        public ServicePlane(IGenericRepository<Plane> repo)
+        public ServicePlane(IUnitOfWork unitOfWork)
 
         {
-            _repo = repo;
+            this.unitOfWork = unitOfWork;
         }
 
         public void Add(Plane plane)
         {
-            _repo.Add(plane);
+            unitOfWork.Repository<Plane>().Add(plane);
+        }
+
+        public void Update(Plane plane)
+        {
+            unitOfWork.Repository<Plane>().Update(plane);
         }
 
         public IList<Plane> GetAll()
         {
-            return _repo.Planes.ToList();
+           return unitOfWork.Repository<Plane>().GetAll().ToList();
         }
 
         public void Remove(Plane plane)
         {
-            _repo.Remove(plane);
+            unitOfWork.Repository<Plane>().Remove(plane);
         }
 
     }

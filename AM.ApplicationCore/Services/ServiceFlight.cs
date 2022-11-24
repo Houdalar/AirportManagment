@@ -14,26 +14,31 @@ namespace AM.ApplicationCore.Services
 
         public Action<Plane>? FlightDetailsDel;
         public Func<string, double>? DurationAverageDel;
-        private readonly IGenericRepository<Flight> _repo;
+        private IUnitOfWork unitOfWork;
 
-        public ServiceFlight(IGenericRepository<Flight> repo)
+        public ServiceFlight(IUnitOfWork unitOfWork)
+
         {
-            _repo = repo;
+            this.unitOfWork = unitOfWork;
         }
 
-        public void Add(Flight flight)
+        public void Add(Flight f)
         {
-            _repo.Add(flight);
+            unitOfWork.Repository<Flight>().Add(f);
         }
 
-        public void Remove(Flight flight)
+        public void Update(Flight f)
         {
-            _repo.Remove(flight);
+            unitOfWork.Repository<Flight>().Update(f);
         }
-
         public IList<Flight> GetAll()
         {
-            return _repo.Flights.ToList();
+            return unitOfWork.Repository<Flight>().GetAll().ToList();
+        }
+
+        public void Remove(Flight f)
+        {
+            unitOfWork.Repository<Flight>().Remove(f);
         }
 
         public ServiceFlight()
