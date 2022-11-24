@@ -1,4 +1,5 @@
 ﻿using AM.ApplicationCore.Domain;
+using AM.ApplicationCore.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,33 @@ using System.Threading.Tasks;
 
 namespace AM.ApplicationCore.Services
 {
-    public class ServiceFlight
+    public class ServiceFlight :IServiceFlight
 
     {
+
         public Action<Plane>? FlightDetailsDel;
         public Func<string, double>? DurationAverageDel;
+        private readonly IGenericRepository<Flight> _repo;
+
+        public ServiceFlight(IGenericRepository<Flight> repo)
+        {
+            _repo = repo;
+        }
+
+        public void Add(Flight flight)
+        {
+            _repo.Add(flight);
+        }
+
+        public void Remove(Flight flight)
+        {
+            _repo.Remove(flight);
+        }
+
+        public IList<Flight> GetAll()
+        {
+            return _repo.Flights.ToList();
+        }
 
         public ServiceFlight()
         {
@@ -146,6 +169,16 @@ namespace AM.ApplicationCore.Services
                     }
                     break;
             }
+        }
+
+        double IServiceFlight.DurationAverage(string destination)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IList<Flight> Getall()
+        {
+            throw new NotImplementedException();
         }
     }
 }
