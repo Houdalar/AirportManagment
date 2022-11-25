@@ -7,7 +7,7 @@ using AM.ApplicationCore.Domain;
 
 namespace AM.ApplicationCore.Interfaces
 {
-    public interface IServicePlane
+    public interface IServicePlane : IServices<Plane>
     {
         public void Add(Plane plane);
         public void Remove(Plane plane);
